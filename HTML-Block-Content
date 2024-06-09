@@ -1,0 +1,100 @@
+<div class="testimonials">
+    <div class="testimonial-carousel">
+        <div class="column">
+            [elementor-template id="1696"]
+        </div>
+        <div class="column">
+            [elementor-template id="1695"]
+        </div>
+        <div class="column">
+            [elementor-template id="1694"]
+        </div>
+        <div class="column">
+            [elementor-template id="1693"]
+        </div>
+        <div class="column">
+            [elementor-template id="1692"]
+        </div>
+        <div class="column">
+            [elementor-template id="1691"]
+        </div>
+        <div class="column">
+            [elementor-template id="1690"]
+        </div>
+        <div class="column">
+            [elementor-template id="1590"]
+        </div>
+        <div class="column">
+            [elementor-template id="1575"]
+        </div>
+    </div>
+</div>
+
+<style>
+    .testimonials {
+        width: 98%;
+        overflow: hidden;
+        text-align: center; /* Center the columns */
+    }
+
+    .testimonial-carousel {
+        white-space: nowrap;
+        font-size: 0; /* Remove whitespace between inline-block elements */
+    }
+
+    .column {
+        display: none; /* Initially hide all columns */
+        width: calc(24% - 10px); /* Adjust as needed */
+        margin: 0; /* No margin between columns */
+        box-sizing: border-box;
+        vertical-align: top;
+        white-space: normal; /* Allow text to wrap */
+        font-size: 16px; /* Reset font size */
+        transition: transform 1s ease; /* Adjust transition time */
+        animation: flipEffect 1.5s ease; /* Add flip animation */
+        animation-fill-mode: both; /* Ensure the element retains the end state of the animation */
+    }
+
+    /* Define flip animation */
+    @keyframes flipEffect {
+        0% {
+            transform: rotateY(0deg); /* Start with no rotation */
+        }
+        50% {
+            transform: rotateY(90deg); /* Rotate to halfway (flipping effect) */
+        }
+        100% {
+            transform: rotateY(0deg); /* Rotate back to original position */
+        }
+    }
+</style>
+
+<script>
+// Function to rotate through testimonials
+function rotateTestimonials() {
+    var testimonials = document.querySelectorAll('.testimonial-carousel .column');
+    var totalTestimonials = testimonials.length;
+    var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
+    var minDistance = 2; // Minimum distance between starting indices
+
+    setInterval(function() {
+        // Hide all testimonials
+        testimonials.forEach(function(testimonial) {
+            testimonial.style.display = 'none';
+        });
+
+        // Display the next set of testimonials, ensuring no repetition
+        for (var i = 0; i < 4; i++) {
+            testimonials[(currentIndex + i * minDistance) % totalTestimonials].style.display = 'inline-block';
+        }
+        
+        // Update the current index for the next iteration
+        currentIndex = (currentIndex + minDistance) % totalTestimonials;
+    }, 3000); // Rotate every 3 seconds
+}
+
+    // Call the function when the page loads
+    window.onload = function() {
+        rotateTestimonials();
+    };
+</script>
