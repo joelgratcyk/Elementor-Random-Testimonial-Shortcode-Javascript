@@ -1,0 +1,70 @@
+<div class="testimonials2">
+    <div class="testimonial-carousel2">
+        <div class="column2">
+            [elementor-template id="1696"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1695"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1694"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1693"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1692"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1691"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1690"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1590"]
+        </div>
+        <div class="column2">
+            [elementor-template id="1575"]
+        </div>
+    </div>
+</div>
+
+<style>
+    .testimonials2 {
+        width: 98%;
+        overflow: hidden;
+        text-align: center; /* Center the column */
+    }
+
+    .testimonial-carousel2 {
+        white-space: nowrap;
+        font-size: 0; /* Remove whitespace between inline-block elements */
+    }
+
+    .column2 {
+        display: none; /* Initially hide all columns */
+        width: 100%; /* Adjust width to fill the container */
+        margin: 0; /* No margin */
+        box-sizing: border-box;
+        vertical-align: top;
+        white-space: normal; /* Allow text to wrap */
+        font-size: 16px; /* Reset font size */
+        transition: transform 1s ease; /* Adjust transition time */
+        animation: flipEffect 1.5s ease; /* Add flip animation */
+        animation-fill-mode: both; /* Ensure the element retains the end state of the animation */
+    }
+
+    /* Define flip animation */
+    @keyframes flipEffect {
+        0% {
+            transform: rotateY(0deg); /* Start with no rotation */
+        }
+        50% {
+            transform: rotateY(90deg); /* Rotate to halfway (flipping effect) */
+        }
+        100% {
+            transform: rotateY(0deg); /* Rotate back to original position */
+        }
+    }
+</style>
