@@ -1,0 +1,71 @@
+<script>
+// Function to rotate through testimonials on desktop
+function rotateDesktopTestimonials() {
+    var testimonials = document.querySelectorAll('.testimonial-carousel .column');
+    var totalTestimonials = testimonials.length;
+    var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
+
+    setInterval(function() {
+        // Hide all testimonials
+        testimonials.forEach(function(testimonial) {
+            testimonial.style.display = 'none';
+        });
+
+        // Display the next set of testimonials, ensuring no repetition
+        for (var i = 0; i < 4; i++) {
+            testimonials[(currentIndex + i) % totalTestimonials].style.display = 'inline-block';
+        }
+
+        // Update the current index for the next iteration
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+    }, 3000); // Rotate every 3 seconds
+}
+
+// Function to rotate through testimonials on mobile
+function rotateMobileTestimonials() {
+    var testimonials = document.querySelectorAll('.testimonial-carousel2 .column2');
+    var totalTestimonials = testimonials.length;
+    var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
+
+    setInterval(function() {
+        // Hide all testimonials
+        testimonials.forEach(function(testimonial) {
+            testimonial.style.display = 'none';
+        });
+
+        // Display the next testimonial, ensuring no repetition
+        testimonials[currentIndex].style.display = 'inline-block';
+
+        // Update the current index for the next iteration
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+    }, 3000); // Rotate every 3 seconds
+}
+
+// Function to check if the device is mobile
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
+// Function to check if the window size is mobile
+function isMobileWindowSize() {
+    return window.innerWidth <= 768; // Adjust the threshold as needed
+}
+
+// Call the appropriate function based on the device type and window size when the page loads
+window.onload = function() {
+    if (isMobileDevice() || isMobileWindowSize()) {        rotateMobileTestimonials();
+    } else {
+        rotateDesktopTestimonials();
+    }
+};
+
+// Add event listener for window resize event
+window.addEventListener('resize', function() {
+    if (isMobileDevice() || isMobileWindowSize()) {
+        rotateMobileTestimonials();
+    } else {
+        rotateDesktopTestimonials();
+    }
+});
+
+</script>
