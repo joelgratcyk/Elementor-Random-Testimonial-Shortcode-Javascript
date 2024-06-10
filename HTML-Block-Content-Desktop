@@ -68,33 +68,3 @@
         }
     }
 </style>
-
-<script>
-// Function to rotate through testimonials
-function rotateTestimonials() {
-    var testimonials = document.querySelectorAll('.testimonial-carousel .column');
-    var totalTestimonials = testimonials.length;
-    var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
-    var minDistance = 2; // Minimum distance between starting indices
-
-    setInterval(function() {
-        // Hide all testimonials
-        testimonials.forEach(function(testimonial) {
-            testimonial.style.display = 'none';
-        });
-
-        // Display the next set of testimonials, ensuring no repetition
-        for (var i = 0; i < 4; i++) {
-            testimonials[(currentIndex + i * minDistance) % totalTestimonials].style.display = 'inline-block';
-        }
-        
-        // Update the current index for the next iteration
-        currentIndex = (currentIndex + minDistance) % totalTestimonials;
-    }, 3000); // Rotate every 3 seconds
-}
-
-    // Call the function when the page loads
-    window.onload = function() {
-        rotateTestimonials();
-    };
-</script>
