@@ -1,11 +1,18 @@
 <script>
+// Declare global variables for interval IDs
+var desktopIntervalID;
+var mobileIntervalID;
+
 // Function to rotate through testimonials on desktop
 function rotateDesktopTestimonials() {
     var testimonials = document.querySelectorAll('.testimonial-carousel .column');
     var totalTestimonials = testimonials.length;
     var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
 
-    setInterval(function() {
+    // Clear existing interval (if any) before setting a new one
+    clearInterval(desktopIntervalID);
+
+    desktopIntervalID = setInterval(function() {
         // Hide all testimonials
         testimonials.forEach(function(testimonial) {
             testimonial.style.display = 'none';
@@ -18,7 +25,7 @@ function rotateDesktopTestimonials() {
 
         // Update the current index for the next iteration
         currentIndex = (currentIndex + 1) % totalTestimonials;
-    }, 3000); // Rotate every 3 seconds
+    }, 4000); // Rotate every 4 seconds
 }
 
 // Function to rotate through testimonials on mobile
@@ -27,7 +34,10 @@ function rotateMobileTestimonials() {
     var totalTestimonials = testimonials.length;
     var currentIndex = Math.floor(Math.random() * totalTestimonials); // Get a random starting index
 
-    setInterval(function() {
+    // Clear existing interval (if any) before setting a new one
+    clearInterval(mobileIntervalID);
+
+    mobileIntervalID = setInterval(function() {
         // Hide all testimonials
         testimonials.forEach(function(testimonial) {
             testimonial.style.display = 'none';
@@ -38,7 +48,7 @@ function rotateMobileTestimonials() {
 
         // Update the current index for the next iteration
         currentIndex = (currentIndex + 1) % totalTestimonials;
-    }, 3000); // Rotate every 3 seconds
+    }, 4000); // Rotate every 4 seconds
 }
 
 // Function to check if the device is mobile
@@ -53,7 +63,8 @@ function isMobileWindowSize() {
 
 // Call the appropriate function based on the device type and window size when the page loads
 window.onload = function() {
-    if (isMobileDevice() || isMobileWindowSize()) {        rotateMobileTestimonials();
+    if (isMobileDevice() || isMobileWindowSize()) {
+        rotateMobileTestimonials();
     } else {
         rotateDesktopTestimonials();
     }
